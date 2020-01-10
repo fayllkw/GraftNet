@@ -17,14 +17,14 @@ relation_emb_file: "relation_emb_100d.npy"
 relation_kge_file: "relation_kge_100d.npy"
 
 to_save_model: True
-save_model_file: "repro/webqsp/best_model_hybrid_batch40"
-pred_file: "repro/webqsp/pred_hybrid_batch40"
-load_model_file: "repro/webqsp/best_model_hybrid_batch40"
+save_model_file: "repro/webqsp/best_model_kg"
+pred_file: "repro/webqsp/pred_kg"
+load_model_file:
 
 # graph options
 fact_dropout: 0.1
 use_kb: True
-use_doc: True
+use_doc: False
 
 num_layer: 3
 max_query_word: 10
@@ -38,10 +38,10 @@ fact_scale: 3
 use_inverse_relation: False
 
 # optimization
-num_epoch: 5
-batch_size: 40
+num_epoch: 50
+batch_size: 30
 gradient_clip: 1
-learning_rate: 0.01
+learning_rate: 0.001
 lstm_dropout: 0.3
 linear_dropout: 0.2
 is_debug: False

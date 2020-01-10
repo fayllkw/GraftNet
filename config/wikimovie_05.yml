@@ -1,5 +1,5 @@
 name: 'wikimovie'
-data_folder: 'datasets/wikimovie/10k_train/'
+data_folder: 'datasets/wikimovie/10k_train_kb_05/'
 train_data: 'train.json'
 train_documents: 'documents.json'
 dev_data: 'dev.json'
@@ -17,9 +17,9 @@ relation_emb_file: null
 relation_kge_file: null 
 
 to_save_model: True
-save_model_file: "repro/wikimovie/best_model_hybrid"
-pred_file: "repro/wikimovie/pred_hybrid"
-load_model_file:
+save_model_file: "repro/wikimovie/best_model_hybrid_05"
+pred_file: "repro/wikimovie/pred_hybrid_05"
+load_model_file: "repro/wikimovie/best_model_hybrid_05"
 
 # graph options
 fact_dropout: 0.0
@@ -39,11 +39,13 @@ use_inverse_relation: True
 
 # optimization
 num_epoch: 10
-batch_size: 20
+batch_size: 80
 gradient_clip: 1
 learning_rate: 0.001
 lstm_dropout: 0.3
 linear_dropout: 0.2
 is_debug: False
 
+# device
+gpu_id: 1
 

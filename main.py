@@ -150,6 +150,11 @@ def get_model(cfg, num_kb_relation, num_entities, num_vocab):
 if __name__ == "__main__":
     config_file = sys.argv[2]
     CFG = get_config(config_file)
+    if "gpu_id" in CFG:
+        torch.cuda.set_device(int(CFG['gpu_id']))
+    else:
+        torch.cuda.set_device(0)
+    print('Current cuda device', torch.cuda.current_device())
     if '--train' == sys.argv[1]:
         train(CFG)
     elif '--test' == sys.argv[1]:
