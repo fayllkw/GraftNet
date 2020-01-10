@@ -1,0 +1,115 @@
+training ...
+('loading document from', 'datasets/wikimovie/10k_train/documents.json')
+indexing documents ...
+('loading data from', 'datasets/wikimovie/10k_train/train.json')
+('max_relevant_doc: ', 100)
+('max_facts: ', 400)
+building word index ...
+converting global to local entity index ...
+('avg local entity: ', 282.9291)
+('max_local_entity', 612)
+preparing data ...
+('loading data from', 'datasets/wikimovie/10k_train/dev.json')
+('max_relevant_doc: ', 100)
+('max_facts: ', 400)
+building word index ...
+converting global to local entity index ...
+('avg local entity: ', 282.4321)
+('max_local_entity', 592)
+preparing data ...
+('loading data from', 'datasets/wikimovie/10k_train/test.json')
+('max_relevant_doc: ', 100)
+('max_facts: ', 400)
+building word index ...
+converting global to local entity index ...
+('avg local entity: ', 283.079481511254)
+('max_local_entity', 595)
+preparing data ...
+('epoch', 0)
+('avg_training_loss', 0.013222594966791804)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.703399999999998)
+validating ...
+('avg_loss', 0.0010260881564427109)
+('max_acc', 0.9995)
+('avg_acc', 0.965599999999997)
+('saving model to', 'repro/wikimovie/best_model_hybrid')
+('epoch', 1)
+('avg_training_loss', 0.0008920172736325185)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.9624999999999965)
+validating ...
+('avg_loss', 0.0006925804360395205)
+('max_acc', 0.9995)
+('avg_acc', 0.9689999999999972)
+('saving model to', 'repro/wikimovie/best_model_hybrid')
+('epoch', 2)
+('avg_training_loss', 0.0006978628499618936)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.966299999999996)
+validating ...
+('avg_loss', 0.0006788780872452662)
+('max_acc', 0.9995)
+('avg_acc', 0.970899999999997)
+('saving model to', 'repro/wikimovie/best_model_hybrid')
+('epoch', 3)
+('avg_training_loss', 0.0007233997411813107)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.9668999999999968)
+validating ...
+('avg_loss', 0.0008601531120729811)
+('max_acc', 0.9995)
+('avg_acc', 0.969599999999997)
+('epoch', 4)
+('avg_training_loss', 0.0005962057492192799)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.9684999999999965)
+validating ...
+('avg_loss', 0.0006473769904040126)
+('max_acc', 0.9995)
+('avg_acc', 0.9691999999999972)
+('epoch', 5)
+('avg_training_loss', 0.000550284814375118)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.969699999999997)
+validating ...
+('avg_loss', 0.0006786822745284801)
+('max_acc', 0.9995)
+('avg_acc', 0.9699999999999971)
+('epoch', 6)
+('avg_training_loss', 0.00047381105873728303)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.9698999999999963)
+validating ...
+('avg_loss', 0.0006788220740674547)
+('max_acc', 0.9995)
+('avg_acc', 0.9692999999999967)
+('epoch', 7)
+('avg_training_loss', 0.0004017816660427798)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.9701999999999963)
+validating ...
+('avg_loss', 0.0007938749209097562)
+('max_acc', 0.9995)
+('avg_acc', 0.970199999999997)
+('epoch', 8)
+('avg_training_loss', 0.0003541082950866894)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.9712999999999969)
+validating ...
+('avg_loss', 0.0007872521325438342)
+('max_acc', 0.9995)
+('avg_acc', 0.9690999999999966)
+('epoch', 9)
+('avg_training_loss', 0.00035027532052388997)
+('max_training_acc', 0.9996999999999999)
+('avg_training_acc', 0.9723999999999972)
+validating ...
+('avg_loss', 0.000686218741711432)
+('max_acc', 0.9995)
+('avg_acc', 0.9697999999999971)
+evaluating on test
+('loading model from ...', 'repro/wikimovie/best_model_hybrid')
+('avg_loss', 0.0005858195633617147)
+('max_acc', 0.9998993963782696)
+('avg_acc', 0.9699195171026126)

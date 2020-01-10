@@ -4,6 +4,12 @@
 datasets
 model
 
+repro/**
+!repro/webqsp/
+repro/webqsp/*
+!repro/webqsp/log/
 
-repro/*
+!repro/wikimovie/
+repro/wikimovie/*
+!repro/wikimovie/log/
 
