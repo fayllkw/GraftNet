@@ -19,8 +19,8 @@ def train(cfg):
 
     train_documents = load_documents(cfg['data_folder'] + cfg['train_documents'])
     train_document_entity_indices, train_document_texts = index_document_entities(train_documents, word2id, entity2id, cfg['max_document_word'])
-    train_data = DataLoader(cfg['data_folder'] + cfg['train_data'], train_documents, train_document_entity_indices, train_document_texts, word2id, relation2id, entity2id, cfg['max_query_word'], cfg['max_document_word'], cfg['use_kb'], cfg['use_doc'], cfg['use_inverse_relation']) 
-    
+    train_data = DataLoader(cfg['data_folder'] + cfg['train_data'], train_documents, train_document_entity_indices, train_document_texts, word2id, relation2id, entity2id, cfg['max_query_word'], cfg['max_document_word'], cfg['use_kb'], cfg['use_doc'], cfg['use_inverse_relation'])
+
     if cfg['dev_documents'] != cfg['train_documents']:
         valid_documents = load_documents(cfg['data_folder'] + cfg['dev_documents'])
         valid_document_entity_indices, valid_document_texts = index_document_entities(valid_documents, word2id, entity2id, cfg['max_document_word'])
@@ -28,7 +28,7 @@ def train(cfg):
         valid_documents = train_documents
         valid_document_entity_indices, valid_document_texts = train_document_entity_indices, train_document_texts
     valid_data = DataLoader(cfg['data_folder'] + cfg['dev_data'], valid_documents, valid_document_entity_indices, valid_document_texts, word2id, relation2id, entity2id, cfg['max_query_word'], cfg['max_document_word'], cfg['use_kb'], cfg['use_doc'], cfg['use_inverse_relation'])
-    
+
     if cfg['test_documents'] != cfg['dev_documents']:
         test_documents = load_documents(cfg['data_folder'] + cfg['test_documents'])
         test_document_entity_indices, test_document_texts = index_document_entities(test_documents, word2id, entity2id, cfg['max_document_word'])
@@ -43,6 +43,9 @@ def train(cfg):
     optimizer = torch.optim.Adam(trainable_parameters, lr=cfg['learning_rate'])
 
     best_dev_acc = 0.0
+    if cfg['load_model_file'] is not None:
+        print('validation loss of loaded model...')
+        best_dev_acc = inference(my_model, valid_data, entity2id, cfg)
     for epoch in range(cfg['num_epoch']):
         try:
             print('epoch', epoch)
@@ -101,7 +104,7 @@ def inference(my_model, valid_data, entity2id, cfg, log_info=False):
         loss, pred, pred_dist = my_model(batch)
         pred = pred.data.cpu().numpy()
         acc, max_acc = cal_accuracy(pred, batch[-1])
-        if log_info: 
+        if log_info:
             output_pred_dist(pred_dist, batch[-1], id2entity, iteration * test_batch_size, valid_data, f_pred)
         eval_loss.append(loss.data[0])
         eval_acc.append(acc)
@@ -133,8 +136,8 @@ def get_model(cfg, num_kb_relation, num_entities, num_vocab):
     entity_kge_file = None if cfg['entity_kge_file'] is None else cfg['data_folder'] + cfg['entity_kge_file']
     relation_emb_file = None if cfg['relation_emb_file'] is None else cfg['data_folder'] + cfg['relation_emb_file']
     relation_kge_file = None if cfg['relation_kge_file'] is None else cfg['data_folder'] + cfg['relation_kge_file']
-    
-    my_model = use_cuda(GraftNet(word_emb_file, entity_emb_file, entity_kge_file, relation_emb_file, relation_kge_file, cfg['num_layer'], num_kb_relation, num_entities, num_vocab, cfg['entity_dim'], cfg['word_dim'], cfg['kge_dim'], cfg['pagerank_lambda'], cfg['fact_scale'], cfg['lstm_dropout'], cfg['linear_dropout'], cfg['use_kb'], cfg['use_doc'])) 
+
+    my_model = use_cuda(GraftNet(word_emb_file, entity_emb_file, entity_kge_file, relation_emb_file, relation_kge_file, cfg['num_layer'], num_kb_relation, num_entities, num_vocab, cfg['entity_dim'], cfg['word_dim'], cfg['kge_dim'], cfg['pagerank_lambda'], cfg['fact_scale'], cfg['lstm_dropout'], cfg['linear_dropout'], cfg['use_kb'], cfg['use_doc']))
 
     if cfg['load_model_file'] is not None:
         print('loading model from', cfg['load_model_file'])
@@ -144,7 +147,7 @@ def get_model(cfg, num_kb_relation, num_entities, num_vocab):
         if entity_emb_file is not None:
             del pretrained_model_states['entity_embedding.weight']
         my_model.load_state_dict(pretrained_model_states, strict=False)
-    
+
     return my_model
 
 if __name__ == "__main__":

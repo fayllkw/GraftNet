@@ -17,9 +17,9 @@ relation_emb_file: "relation_emb_100d.npy"
 relation_kge_file: "relation_kge_100d.npy"
 
 to_save_model: True
-save_model_file: "repro/webqsp/best_model_hybrid_05_cont"
-pred_file: "repro/webqsp/pred_hybrid_05_cont"
-load_model_file: "repro/webqsp/best_model_hybrid_05"
+save_model_file: "repro/webqsp/best_model_hybrid_05_batch40"
+pred_file: "repro/webqsp/pred_hybrid_05_batch40"
+load_model_file: "repro/webqsp/best_model_hybrid_05_batch40"
 
 # graph options
 fact_dropout: 0.1
@@ -39,9 +39,9 @@ use_inverse_relation: False
 
 # optimization
 num_epoch: 10
-batch_size: 10
+batch_size: 40
 gradient_clip: 1
-learning_rate: 0.00001
+learning_rate: 0.005
 lstm_dropout: 0.3
 linear_dropout: 0.2
 is_debug: False
