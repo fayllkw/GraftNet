@@ -1,5 +1,5 @@
 name: 'webqsp'
-data_folder: 'datasets/webqsp/kg_05/'
+data_folder: 'datasets/webqsp/kb_05/'
 train_data: 'train.json'
 train_documents: 'documents.json'
 dev_data: 'dev.json'
@@ -19,7 +19,7 @@ relation_kge_file: "relation_kge_100d.npy"
 to_save_model: True
 save_model_file: "repro/webqsp/best_model_kg_05"
 pred_file: "repro/webqsp/pred_kg_05"
-load_model_file:
+load_model_file: "repro/webqsp/best_model_kg_05"
 
 # graph options
 fact_dropout: 0.1
@@ -38,8 +38,8 @@ fact_scale: 3
 use_inverse_relation: False
 
 # optimization
-num_epoch: 50
-batch_size: 30
+num_epoch: 10
+batch_size: 20
 gradient_clip: 1
 learning_rate: 0.001
 lstm_dropout: 0.3

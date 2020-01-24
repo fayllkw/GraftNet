@@ -19,7 +19,7 @@ relation_kge_file: "relation_kge_100d.npy"
 to_save_model: True
 save_model_file: "repro/webqsp/best_model_kg"
 pred_file: "repro/webqsp/pred_kg"
-load_model_file:
+load_model_file: "repro/webqsp/best_model_kg"
 
 # graph options
 fact_dropout: 0.1
@@ -38,10 +38,10 @@ fact_scale: 3
 use_inverse_relation: False
 
 # optimization
-num_epoch: 50
+num_epoch: 30
 batch_size: 30
 gradient_clip: 1
-learning_rate: 0.001
+learning_rate: 0.0002
 lstm_dropout: 0.3
 linear_dropout: 0.2
 is_debug: False
